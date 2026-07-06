@@ -8,23 +8,15 @@ plugins {
 }
 
 kotlin {
-    listOf(
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach { iosTarget ->
-        iosTarget.binaries.framework {
-            baseName = "Shared"
-            isStatic = true
-        }
-    }
-    
+
+
     jvm()
-    
+
     androidLibrary {
        namespace = "org.example.project.app.shared"
        compileSdk = libs.versions.android.compileSdk.get().toInt()
        minSdk = libs.versions.android.minSdk.get().toInt()
-    
+
        compilerOptions {
            jvmTarget = JvmTarget.JVM_11
        }
@@ -35,10 +27,12 @@ kotlin {
            isIncludeAndroidResources = true
        }
     }
-    
+
     sourceSets {
         androidMain.dependencies {
             implementation(libs.compose.uiToolingPreview)
+            implementation("androidx.security:security-crypto-ktx:1.1.0-alpha06")
+
         }
         commonMain.dependencies {
 //            api(projects.core)
@@ -50,6 +44,8 @@ kotlin {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation(libs.androidx.datastore.preferences)
+
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

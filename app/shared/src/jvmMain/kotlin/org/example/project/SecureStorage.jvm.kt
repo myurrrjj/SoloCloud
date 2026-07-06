@@ -1,11 +1,18 @@
 package org.example.project
 
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import java.io.File
 
-actual class SecureStorage actual constructor() {
-    actual fun saveString(key: String, value: String) {
-    }
-
-    actual fun getString(key: String): String? {
-        return null
-    }
+actual fun createDataStore(): DataStore<Preferences> {
+    return createDataStoreWithDefaults(
+        producePath = {
+            val userHome = System.getProperty("user.home")
+            val configDir = File(userHome, ".solocloud")
+            if (!configDir.exists()) {
+                configDir.mkdirs()
+            }
+            File(configDir, "solocloud.preferences_pb").absolutePath
+        }
+    )
 }

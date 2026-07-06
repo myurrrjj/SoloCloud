@@ -59,4 +59,29 @@ class LocalFileRepository(private val jail: StorageJail) : FileRepository {
             false
         }
     }
+
+    override suspend fun getFile(path: String): File = withContext(Dispatchers.IO) {
+        jail.resolveAndValidatePath(path)
+    }
+
+    override suspend fun deleteFile(path: String): Boolean = withContext(Dispatchers.IO) {
+        val file = jail.resolveAndValidatePath(path)
+        if (!file.exists()) return@withContext false
+        if (file.isDirectory) file.deleteRecursively() else
+            file.delete()
+
+    }
+
+    override suspend fun renameFile(
+        oldPath: String,
+        newName: String
+    ): Boolean = withContext(Dispatchers.IO) {
+        val oldFile = jail.resolveAndValidatePath(oldPath)
+        if (!oldFile.exists()) return@withContext false
+        val parent = oldFile.parentFile
+        val newFile = jail.resolveAndValidatePath("${parent.name}/${newName}")
+
+        if (newFile.exists()) return@withContext false
+        oldFile.renameTo(newFile)
+    }
 }
