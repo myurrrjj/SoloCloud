@@ -1,5 +1,4 @@
-rootProject.name = "SoloCloud"
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+rootProject.name = "Solocloud"
 
 pluginManagement {
     repositories {
@@ -32,8 +31,7 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 
-include(":app:androidApp")
-include(":app:desktopApp")
-include(":app:shared")
-//include(":core")
+include(":androidApp")
+include(":desktopApp")
+include(":shared")
 include(":server")

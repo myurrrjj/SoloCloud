@@ -1,7 +1,4 @@
-This is a Kotlin Multiplatform project targeting Android, iOS, Desktop (JVM), Server.
-
-* [/app/iosApp](./app/iosApp/iosApp) contains an iOS application. Even if you’re sharing your UI with Compose Multiplatform,
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+This is a Kotlin Multiplatform project targeting Android, Desktop (JVM), Server.
 
 * [/app/shared](./app/shared/src) is for code that will be shared across your Compose Multiplatform applications.
   It contains several subfolders:
@@ -27,7 +24,6 @@ Use the run configurations provided by the run widget in your IDE's toolbar. You
   - Hot reload: `./gradlew :app:desktopApp:hotRun --auto`
   - Standard run: `./gradlew :app:desktopApp:run`
 - Server: `./gradlew :server:run`
-- iOS app: open the [/app/iosApp](./app/iosApp) directory in Xcode and run it from there.
 
 ---
 
