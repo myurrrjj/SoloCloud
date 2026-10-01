@@ -5,8 +5,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class DirectoryListing(
-    @SerialName("path")
-    val path:String,
     @SerialName("items")
-    val items: List<FileItem>
+    val items: List<FileItem>,
+    @SerialName("nextCursor")
+    val nextCursor: String? = null
 )

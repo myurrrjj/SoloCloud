@@ -7,13 +7,10 @@ import kotlinx.serialization.Serializable
 data class UploadProgress(
     @SerialName("fileName")
     val fileName: String,
-
-    @SerialName("bytesTransferred")
-    val bytesTransferred: Long,
-
+    @SerialName("bytesSent")
+    val bytesSent: Long,
     @SerialName("totalBytes")
     val totalBytes: Long,
-
     @SerialName("state")
     val state: TransferState
 )

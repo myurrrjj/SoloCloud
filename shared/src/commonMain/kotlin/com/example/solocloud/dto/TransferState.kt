@@ -7,16 +7,14 @@ import kotlinx.serialization.Serializable
 enum class TransferState {
     @SerialName("pending")
     PENDING,
-
     @SerialName("running")
     RUNNING,
-
+    @SerialName("paused")
+    PAUSED,
     @SerialName("completed")
     COMPLETED,
-
     @SerialName("failed")
     FAILED,
-
     @SerialName("cancelled")
     CANCELLED
 }

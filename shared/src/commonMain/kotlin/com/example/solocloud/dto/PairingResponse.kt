@@ -5,9 +5,10 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class PairingResponse(
-    @SerialName("token")
-    val token: String,
-
+    @SerialName("jwt")
+    val jwt: String,
     @SerialName("expiresAt")
-    val expiresAt: Long
+    val expiresAt: Long,
+    @SerialName("serverName")
+    val serverName: String
 )

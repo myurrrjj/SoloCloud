@@ -5,19 +5,10 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class FileItem(
-    @SerialName("name")
-    val name : String,
-
-    @SerialName("path")
-    val path:String,
-
-    @SerialName("isDirectory")
-    val isDirectory : Boolean,
-
-    @SerialName("size")
-    val size : Long,
-
-    @SerialName("modifiedAt")
-    val modifiedAt: Long
-
+    @SerialName("name") val name: String,
+    @SerialName("path") val path: String,
+    @SerialName("isDirectory") val isDirectory: Boolean,
+    @SerialName("sizeBytes") val sizeBytes: Long,
+    @SerialName("lastModified") val lastModified: Long,
+    @SerialName("mimeType") val mimeType: String? = null
 )

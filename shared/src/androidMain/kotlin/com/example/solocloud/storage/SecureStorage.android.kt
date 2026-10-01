@@ -1,6 +1,7 @@
 package com.example.solocloud.storage
 
 import android.content.Context
+import android.provider.Settings.Global.putString
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
 import com.example.solocloud.dto.ServerConfig
@@ -29,10 +30,6 @@ actual class SecureStorage(context: Context) {
             .apply()
     }
 
-    actual suspend fun getToken(): String? {
-        return preferences.getString(KEY_TOKEN, null)
-    }
-
     actual suspend fun clearToken() {
         preferences.edit()
             .remove(KEY_TOKEN)
@@ -47,6 +44,12 @@ actual class SecureStorage(context: Context) {
             )
             .apply()
     }
+
+    actual suspend fun getToken(): String? {
+        return preferences.getString(KEY_TOKEN, null)
+    }
+
+
 
     actual suspend fun getServerConfig(): ServerConfig? {
         val stored = preferences.getString(KEY_SERVER_CONFIG, null)

@@ -4,10 +4,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class AuthToken (
-    @SerialName("token")
-    val token: String
-    ,
+data class AuthToken(
+    @SerialName("jwt")
+    val jwt: String,
     @SerialName("expiresAt")
     val expiresAt: Long
 )
