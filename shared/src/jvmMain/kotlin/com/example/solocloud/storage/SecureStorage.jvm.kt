@@ -22,7 +22,8 @@ import kotlin.io.encoding.Base64
 @Serializable
 private data class SecurePayload(
     val token: String? = null,
-    val serverConfig: ServerConfig? = null
+    val serverConfig: ServerConfig? = null,
+    val jwtSecret:String? = null
 )
 
 actual class SecureStorage {
@@ -181,6 +182,19 @@ actual class SecureStorage {
     actual suspend fun getServerConfig(): ServerConfig? {
         return mutex.withLock {
             readPayload().serverConfig
+        }
+    }
+
+    actual suspend fun saveJwtSecret(secret: String) {
+        mutex.withLock {
+            val current = readPayload()
+            writePayload(current.copy(jwtSecret = secret))
+        }
+    }
+
+    actual suspend fun getJwtSecret(): String? {
+        return mutex.withLock {
+            readPayload().jwtSecret
         }
     }
 }

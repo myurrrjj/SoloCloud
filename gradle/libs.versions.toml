@@ -18,6 +18,8 @@ logback = "1.6.3"
 androidx-securityCrypto = "1.1.0"
 material3 = "1.11.0-alpha07"
 kotlinx-serialization = "1.9.0"
+javaJwt = "4.4.0"
+
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -54,6 +56,7 @@ ktor-clientOkhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor
 ktor-clientCio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
 ktor-clientContentNegotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-clientAuth = { module = "io.ktor:ktor-client-auth", version.ref = "ktor" }
+java-jwt = { module = "com.auth0:java-jwt", version.ref = "javaJwt" }
 
 androidx-security-crypto = { module = "androidx.security:security-crypto", version.ref = "androidx-securityCrypto" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }

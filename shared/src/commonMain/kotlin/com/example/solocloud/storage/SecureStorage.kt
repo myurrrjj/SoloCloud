@@ -9,5 +9,7 @@ expect class SecureStorage {
     suspend fun clearToken()
     suspend fun saveServerConfig(config:ServerConfig)
     suspend fun getServerConfig(): ServerConfig?
+    suspend fun saveJwtSecret(secret:String)
+    suspend fun getJwtSecret():String?
 
 }

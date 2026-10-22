@@ -57,8 +57,25 @@ actual class SecureStorage(context: Context) {
 
         return json.decodeFromString<ServerConfig>(stored)
     }
+
+
+    actual suspend fun saveJwtSecret(secret: String) {
+        preferences.edit()
+            .putString(KEY_JWT_SECRET,secret)
+            .apply()
+    }
+
+    actual suspend fun getJwtSecret(): String? {
+        return preferences.getString(KEY_JWT_SECRET,null)
+    }
+
+
+
+
+
     private companion object {
         const val KEY_TOKEN = "jwt_token"
         const val KEY_SERVER_CONFIG = "server_config"
+        const val KEY_JWT_SECRET = "jwt_secret"
     }
 }
